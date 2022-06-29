@@ -11,9 +11,9 @@ services:
     image: Tvitser/Cource_7:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
       postgres:
-        condition: service_heathy
+        condition: service_healthy
       migrations:
-        condition: service_completed_succesfully
+        condition: service_completed_successfully
     volumes:
       - ./.env:/app/.env
   mirations:
