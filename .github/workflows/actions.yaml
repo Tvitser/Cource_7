@@ -6,13 +6,13 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
-      name: clone code
+    - name: clone code
       uses: workflows/checkout@v2
-      name: docker build
+    - name: docker build
       run: docker build -t Tvitser/Course_7:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
-      name: docker login
+    - name: docker login
       run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-      name: docker push
+    - name: docker push
       run: docker push Tvitser/Cource_7:$GITHUB_REF_NAME-$GITHUB_RUN_ID
   deploy:
     runs-on: ubuntu-latest
@@ -22,14 +22,14 @@ jobs:
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_NAME: ${{ secrets.DB_NAME }}
     steps:
-      name: clone code
+    - name: clone code
       uses: workflows/checkout@v2
-      name: render configs
+    - name: render configs
       run: |
         mkdir deploy
         cat docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
         cat .docker_ci_env | envsubst > deploy/.env
-      name: clone files to server
+    - name: clone files to server
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -38,7 +38,7 @@ jobs:
         source: "deploy/docker-compose.yaml,deploy/.env"
         target: "todolist_ci_version_1"
         strin_components: 1
-      name: run docker-compose
+    - name: run docker-compose
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
