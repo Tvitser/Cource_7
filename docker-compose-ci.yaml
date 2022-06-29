@@ -8,7 +8,9 @@ services:
     depends_on:
       - api
   api:
-    image: tvitser/cource_7:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    image: twitser/todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    ports:
+      - 8000:8000
     depends_on:
       postgres:
         condition: service_healthy
