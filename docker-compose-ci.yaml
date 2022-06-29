@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   front:
-    image: Tvitser/Cource_7:base
+    image: sermalenk/skypro-front:lesson-34
     ports:
       - 80:80
     depends_on:
@@ -16,7 +16,7 @@ services:
         condition: service_completed_successfully
     volumes:
       - ./.env:/app/.env
-  mirations:
+  migrations:
     image: Tvitser/Cource_7:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
       postgres:
