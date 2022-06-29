@@ -19,8 +19,8 @@ services:
   mirations:
     image: Tvitser/Cource_7:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
-      - postgres:
-          condition: service_healthy
+      postgres:
+        condition: service_healthy
     volumes:
       - ./.env:/app/.env
     command: python manage.py migrate
