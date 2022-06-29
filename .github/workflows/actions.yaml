@@ -1,7 +1,5 @@
 name: Build and deploy action
 on: [push]
-description:
-runs:
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
