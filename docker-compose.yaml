@@ -13,7 +13,7 @@ services:
       migrations:
         condition: service_completed_successfully
     volumes:
-      - ./.docker_env:/app/todolist/.env
+      - ./todolist/.env:/app/todolist/.env
   migrations:
     build:
       context: .
