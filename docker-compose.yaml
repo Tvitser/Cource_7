@@ -24,8 +24,6 @@ services:
     command: python manage.py migrate
   postgres:
     image: postgres:latest
-    ports:
-      - 5432:5432
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: todolist
