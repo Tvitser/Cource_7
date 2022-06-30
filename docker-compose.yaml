@@ -4,15 +4,16 @@ services:
   api:
     build:
       context: .
+      dockerfile: Dockerfile
     ports:
-      - 8000:8000
+      - 8000:80
     depends_on:
       postgres:
         condition: service_healthy
       migrations:
         condition: service_completed_successfully
     volumes:
-      - ./.docker_env:/app/.env
+      - ./.docker_env:/app/todolist/.env
   migrations:
     build:
       context: .
@@ -20,13 +21,14 @@ services:
       postgres:
         condition: service_healthy
     volumes:
-      - ./.docker_env:/app/.env
+      - ./todolist/.env:/app/todolist/.env
     command: python manage.py migrate
   postgres:
     image: postgres:latest
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: todolist
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s

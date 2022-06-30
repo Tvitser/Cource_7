@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES ={'default':env.db()}
+DATABASES ={'default': env.db()}
 
 
 
