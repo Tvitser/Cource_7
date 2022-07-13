@@ -2,4 +2,4 @@ DEBUG=True
 SECRET_KEY=django-insecure-8vyef%8h5hns(+)sg-e+quz*d1o5e_m=o^ea+q+$+3x!q#)1w$
 DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
 SOCIAL_AUTH_VK_OAUTH2_KEY=8217981
-SOCIAL_AUTH_VK_OAUTH2_SECRET=570c0f92570c0f92570c0f926857716aef5570c570c0f9235c2cfd8cd0514b47586a5dc
+SOCIAL_AUTH_VK_OAUTH2_SECRET=gi2ML9xkd5JLXV1AWeL8
