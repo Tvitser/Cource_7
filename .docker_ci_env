@@ -1,4 +1,4 @@
 DEBUG=True
 SECRET_KEY=django-insecure-8vyef%8h5hns(+)sg-e+quz*d1o5e_m=o^ea+q+$+3x!q#)1w$
-DATABASE_URL=postgres://postgres:postgres@postgres:5432/todolisd
+DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
 
