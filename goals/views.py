@@ -8,4 +8,5 @@ from goals.serializers import GoalCategoryCreateSerializer
 class GoalCategoryCreateView(CreateAPIView):
     model = GoalCategory
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = GoalCategoryCreateSerializer
+    serializer_class = GoalCreateSerializer
+
