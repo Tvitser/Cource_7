@@ -55,7 +55,7 @@ class GoalCategoryView(RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return GoalCategory.objects.filter(
-            title=self.request.user, is_deleted=False
+            user=self.request.user, is_deleted=False
         )
 
     def perform_destroy(self, instance):
@@ -79,7 +79,7 @@ class GoalView(RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Goal.objects.filter(
-            category__title__user=self.request.user
+            category__user=self.request.user
         )
 
     def perform_destroy(self, instance):
@@ -105,7 +105,7 @@ class GoalListView(ListAPIView):
 
     def get_queryset(self):
         return Goal.objects.filter(
-            category__title__user=self.request.user
+            category__user=self.request.user
         )
 
 
