@@ -37,26 +37,16 @@ class GoalCategoryListView(ListAPIView):
         filters.OrderingFilter,
         filters.SearchFilter,
     ]
-    filterset_fields = ["board", "user"]
+    filterset_fields = ["user"]
     ordering_fields = ["title", "date_created"]
     ordering = ["title"]
     search_fields = ["title"]
-
-    def get_queryset(self):
-        return GoalCategory.objects.filter(
-            board__participants__user=self.request.user, is_deleted=False
-        )
-
 
 class GoalCategoryView(RetrieveUpdateDestroyAPIView):
     model = GoalCategory
     serializer_class = GoalCategorySerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        return GoalCategory.objects.filter(
-            board__participants__user=self.request.user, is_deleted=False
-        )
 
     def perform_destroy(self, instance):
         with transaction.atomic():
@@ -77,10 +67,6 @@ class GoalView(RetrieveUpdateDestroyAPIView):
     serializer_class = GoalSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        return Goal.objects.filter(
-            category__board__participants__user=self.request.user
-        )
 
     def perform_destroy(self, instance):
         instance.status = Goal.Status.archived
@@ -103,10 +89,6 @@ class GoalListView(ListAPIView):
     ordering_fields = ["due_date", "priority"]
     ordering = ["priority", "due_date"]
 
-    def get_queryset(self):
-        return Goal.objects.filter(
-            category__board__participants__user=self.request.user
-        )
 
 
 class CommentCreateView(CreateAPIView):
@@ -120,10 +102,6 @@ class CommentView(RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        return GoalComment.objects.filter(
-            goal__category__board__participants__user=self.request.user
-        )
 
 
 class CommentListView(ListAPIView):
@@ -135,7 +113,3 @@ class CommentListView(ListAPIView):
     filterset_fields = ["goal"]
     ordering = "-id"
 
-    def get_queryset(self):
-        return GoalComment.objects.filter(
-            goal__category__board__participants__user=self.request.user
-        )
