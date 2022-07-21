@@ -40,14 +40,6 @@ class GoalSerializer(serializers.ModelSerializer):
         read_only_fields = ("id", "created", "updated", "user")
         fields = "__all__"
 
-    def validate_category(self, value):
-        if value.is_deleted:
-            raise serializers.ValidationError("not allowed in deleted category")
-
-        if self.instance.category.board_id != value.board_id:
-            raise serializers.ValidationError("transfer between projects not allowed")
-        return value
-
 
 class CommentCreateSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
