@@ -7,16 +7,7 @@ services:
       - 80:80
     depends_on:
       - api
-  bot:
-    image: twitser/todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
-    depends_on:
-      postgres:
-        condition: service_healthy
-      migrations:
-        condition: service_completed_successfully
-    volumes:
-      - ./.env:/app/.env
-    command: python manage.py runbot
+
   api:
     image: twitser/todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     depends_on:
@@ -34,6 +25,17 @@ services:
     volumes:
       - ./.env:/app/todolist/.env
     command: python manage.py migrate
+  bot:
+    image: twitser/todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+    volumes:
+      - ./.env:/app/.env
+    command: python manage.py runbot
+
   postgres:
     image: postgres:latest
     environment:
