@@ -18,7 +18,7 @@ services:
   api:
     image: twitser/todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
-      - 8000:8000
+      - 8080:9000
     depends_on:
       postgres:
         condition: service_healthy
