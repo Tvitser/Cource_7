@@ -45,3 +45,4 @@ jobs:
         script: |
           cd todolist_ci_version_1
           echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
+          echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker system prune -a -f
