@@ -12,6 +12,10 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+    volumes:
+      - ./.env:/app/.env
     command: python manage.py runbot
   api:
     image: twitser/todolist:$GITHUB_REF_NAME-$GITHUB_RUN_ID
