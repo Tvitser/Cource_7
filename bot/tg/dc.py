@@ -10,7 +10,7 @@ class MessageFrom:
     id: int
     first_name: str
     last_name: Optional[str]
-    username: str
+    username: Optional[str]
 
     class Meta:
         unknown = EXCLUDE
@@ -52,7 +52,7 @@ class UpdateObj:
 @dataclass
 class GetUpdatesResponse:
     ok: bool
-    result: List[UpdateObj]
+    result: list[UpdateObj]
 
     Schema: ClassVar[Type[Schema]] = Schema
 

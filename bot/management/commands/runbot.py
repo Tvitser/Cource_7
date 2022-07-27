@@ -54,7 +54,7 @@ class Command(BaseCommand):
             self.handle_user_without_verification(msg, tg_user)
 
     def handle(self, *args, **kwargs):
-        offset = 2
+        offset = 0
 
         while True:
             res = self.tg_client.get_updates(offset=offset)
