@@ -8,7 +8,7 @@ from marshmallow import Schema, EXCLUDE
 @dataclass
 class MessageFrom:
     id: int
-    first_name: str
+    first_name: Optional[str]
     last_name: Optional[str]
     username: Optional[str]
 
@@ -52,7 +52,7 @@ class UpdateObj:
 @dataclass
 class GetUpdatesResponse:
     ok: bool
-    result: list[UpdateObj]
+    result: List[UpdateObj]
 
     Schema: ClassVar[Type[Schema]] = Schema
 
