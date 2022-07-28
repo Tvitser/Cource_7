@@ -27,7 +27,7 @@ class Command(BaseCommand):
             resp_msg = [f"#{item.id} {item.title}" for item in gls]
             self.tg_client.send_message(msg.chat.id, "\n".join(resp_msg))
         else:
-            self.tg_client.send_message(msg.chat.id, "[goals list is empty]")
+                self.tg_client.send_message(msg.chat.id, "[goals list is empty]")
 
     def handle_verified_user(self, msg: Message, tg_user: TgUser):
         if not msg.text:
