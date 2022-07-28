@@ -1,5 +1,5 @@
-SECRET_KEY=django-insecure-8vyef%8h5hns(+)sg-e+quz*d1o5e_m=o^ea+q+$+3x!q#)1w$
 DEBUG=True
+SECRET_KEY=django-insecure-8vyef%8h5hns(+)sg-e+quz*d1o5e_m=o^ea+q+$+3x!q#)1w$
 DATABASE_URL=psql://${DB_USER}:${DB_PASSWORD}@postgres:5432/${DB_NAME}
 SOCIAL_AUTH_VK_OAUTH2_KEY=${SOCIAL_AUTH_VK_OAUTH2_KEY}
 SOCIAL_AUTH_VK_OAUTH2_SECRET=${SOCIAL_AUTH_VK_OAUTH2_SECRET}
