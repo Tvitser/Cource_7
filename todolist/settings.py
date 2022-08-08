@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'social_django',
     'goals',
     'bot',
-    'drf_yasg'
+    'drf_yasg',
+    'drf-spectacular',
 ]
 
 MIDDLEWARE = [
@@ -163,3 +164,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.User'
 
 BOT_TOKEN = env("BOT_TOKEN")
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'todolisd',
+    'DESCRIPTION': 'Online-calendar',
+    'VERSION': '1.0.0',
+}
