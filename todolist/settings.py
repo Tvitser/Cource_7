@@ -167,9 +167,11 @@ BOT_TOKEN = env("BOT_TOKEN")
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
 }
 
 SPECTACULAR_SETTINGS = {
+    'swagger': '3.0.0'
     'TITLE': 'todolisd',
     'DESCRIPTION': 'Online-calendar',
     'VERSION': '1.0.0',
