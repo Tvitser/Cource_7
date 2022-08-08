@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'goals',
     'bot',
     'drf_yasg',
-    'drf-spectacular',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
