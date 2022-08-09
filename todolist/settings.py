@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'social_django',
     'goals',
     'bot',
-    'drf_yasg',
     'drf_spectacular',
 ]
 
