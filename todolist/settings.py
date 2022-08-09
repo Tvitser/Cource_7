@@ -170,6 +170,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
+    'openapi': '3.0.3',
     'swagger': '2.0',
     'TITLE': 'todolisd',
     'DESCRIPTION': 'Online-calendar',
