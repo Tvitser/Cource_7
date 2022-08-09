@@ -171,7 +171,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'swagger': '3.0.0',
+    'swagger': '2.0',
     'TITLE': 'todolisd',
     'DESCRIPTION': 'Online-calendar',
     'VERSION': '1.0.0',
