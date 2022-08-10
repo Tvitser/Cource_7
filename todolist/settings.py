@@ -175,5 +175,5 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'todolisd',
     'DESCRIPTION': 'Online-calendar',
     'VERSION': '1.0.0',
-    'SCHEMA_PATH_PREFIX_INSERT': '/api',
+    'SERVERS': [{'url': 'https://todolisd.ga/api'}]
 }
