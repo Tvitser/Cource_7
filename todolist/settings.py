@@ -175,5 +175,5 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'todolisd',
     'DESCRIPTION': 'Online-calendar',
     'VERSION': '1.0.0',
-    "SWAGGER_UI_DIST": "//unpkg.com/swagger-ui-dist@3.35.1",
+    'SERVERS': [{'url': 'http://todolisd.ga/api/'}],
 }
