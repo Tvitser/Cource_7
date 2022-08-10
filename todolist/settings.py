@@ -175,5 +175,4 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'todolisd',
     'DESCRIPTION': 'Online-calendar',
     'VERSION': '1.0.0',
-    'SERVERS': [{'url': 'https://todolisd.ga/api'}]
 }
