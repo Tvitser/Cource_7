@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'environ',
     'core',
     'rest_framework',
+    'rest_framework.authtoken',
     'social_django',
     'goals',
     'bot',
@@ -166,7 +167,10 @@ BOT_TOKEN = env("BOT_TOKEN")
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 
 SPECTACULAR_SETTINGS = {

@@ -18,7 +18,7 @@ class BoardCreateSerializer(serializers.ModelSerializer):
         user = validated_data.pop("user")
         board = Board.objects.create(**validated_data)
         BoardParticipant.objects.create(
-            user=user, board=board, role=BoardParticipant.Role.owner
+            user=user, board=board, role=BoardParticipant.Role.OWNER
         )
         return board
 
@@ -105,7 +105,7 @@ class GoalCategoryCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("not allowed in deleted project")
         allow = BoardParticipant.objects.filter(
             board=value,
-            role__in=[BoardParticipant.Role.owner, BoardParticipant.Role.writer],
+            role__in=[BoardParticipant.Role.OWNER, BoardParticipant.Role.WRITER],
             user=self.context["request"].user,
         ).exists()
         if not allow:
@@ -128,7 +128,7 @@ class GoalCreateSerializer(serializers.ModelSerializer):
 
         if not BoardParticipant.objects.filter(
             board_id=value.board_id,
-            role__in=[BoardParticipant.Role.owner, BoardParticipant.Role.writer],
+            role__in=[BoardParticipant.Role.OWNER, BoardParticipant.Role.OWNER],
             user=self.context["request"].user,
         ).exists():
             raise serializers.ValidationError("must be owner or writer in project")
@@ -163,7 +163,7 @@ class CommentCreateSerializer(serializers.ModelSerializer):
     def validate_goal(self, value):
         if not BoardParticipant.objects.filter(
             board_id=value.category.board_id,
-            role__in=[BoardParticipant.Role.owner, BoardParticipant.Role.writer],
+            role__in=[BoardParticipant.Role.OWNER, BoardParticipant.Role.WRITER],
             user=self.context["request"].user,
         ).exists():
             raise serializers.ValidationError("must be owner or writer in project")

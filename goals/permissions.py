@@ -27,7 +27,7 @@ class GoalCategoryPermissions(permissions.BasePermission):
         return BoardParticipant.objects.filter(
             user=request.user,
             board=obj.board,
-            role__in=[BoardParticipant.Role.owner, BoardParticipant.Role.writer],
+            role__in=[BoardParticipant.Role.OWNER, BoardParticipant.Role.WRITER],
         ).exists()
 
 
