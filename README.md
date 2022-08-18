@@ -14,4 +14,5 @@ pip install -r requirements.txt
 
 1. Создать виртуальное окружение в папке с проектом командой  python3 -m venv .
 2. Активировать виртуальное окружение командой ./env/Scripts/activate
-3. Запустить тесты командой  pytest . -v 
+3. Установить зависимости: pip install -r requirements.txt
+4. Запустить тесты командой  pytest . -v 
