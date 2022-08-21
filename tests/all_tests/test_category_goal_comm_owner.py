@@ -15,10 +15,10 @@ def test_category_crud_owner(client, get_login, board_factory):
     
     data = {"title": "test_category_title", "user": current_user, "board": board.id}
     
-    create_request = current_client.post("/goals/goal_category/create", data=data, HTTP_AUTHORIZATION=token)
+    create_request = current_client.post("/goals/goal_category/create", data=data)
     
     pk = create_request.data.get("id")
-    response = current_client.get(f"/goals/goal_category/{pk}", HTTP_AUTHORIZATION=token)
+    response = current_client.get(f"/goals/goal_category/{pk}")
     
     update_data = {"title": "updated_title"}
     update_request = current_client.patch(f"/goals/goal_category/{pk}",
@@ -26,7 +26,7 @@ def test_category_crud_owner(client, get_login, board_factory):
                                   data=update_data,
                                   HTTP_AUTHORIZATION=token)
                                   
-    delete_request = current_client.delete(f"/goals/goal_category/{pk}", HTTP_AUTHORIZATION=token)
+    delete_request = current_client.delete(f"/goals/goal_category/{pk}")
     
     assert create_request.status_code == 201
     assert create_request.data.get("title") == data["title"]
@@ -62,8 +62,7 @@ def test_comment_crud_owner(client, get_login, board_factory, category_factory, 
     update_data = {"text": "updated_text"}
     update_request = current_client.patch(f"/goals/goal_comment/{pk}",
                                   content_type="application/json",
-                                  data=update_data, 
-                                  HTTP_AUTHORIZATION=token)
+                                  data=update_data)
                                   
     delete_request = current_client.delete(f"/goals/goal_comment/{pk}")
     
